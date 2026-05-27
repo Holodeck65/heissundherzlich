@@ -881,18 +881,19 @@
       </div>
 
       <div class="hero-stoerer" aria-label="Hör rein – unser Song heizt ein!">
-        <svg viewBox="0 0 110 90" width="165" height="138" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 110 90" width="165" height="138" fill="none" xmlns="http://www.w3.org/2000/svg" overflow="visible">
           <defs>
             <filter id="txt-shadow" x="-20%" y="-20%" width="140%" height="140%">
               <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="rgba(0,0,0,0.8)"/>
             </filter>
           </defs>
           <!-- Antenne -->
-          <line x1="79" y1="9" x2="94" y2="1" stroke="rgba(245,239,230,0.6)" stroke-width="1.8" stroke-linecap="round"/>
-          <!-- Signalwellen (animiert) -->
+          <line x1="76" y1="11" x2="97" y2="-3" stroke="rgba(245,239,230,0.6)" stroke-width="1.8" stroke-linecap="round"/>
+          <!-- Radiowellen (3 konzentrische Halbkreise um Antennenspitze) -->
           <g class="stoerer-signal">
-            <path d="M96,5 Q99,3 96,1" stroke="#C4622D" stroke-width="1.3" stroke-linecap="round" fill="none"/>
-            <path d="M99,7 Q104,3 99,0" stroke="#C4622D" stroke-width="1.1" stroke-linecap="round" fill="none" opacity="0.6"/>
+            <path d="M92,-3 A 5,5 0 0 0 102,-3" stroke="#C4622D" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            <path d="M88,-3 A 9,9 0 0 0 106,-3" stroke="#C4622D" stroke-width="1.3" stroke-linecap="round" fill="none" opacity="0.7"/>
+            <path d="M84,-3 A 13,13 0 0 0 110,-3" stroke="#C4622D" stroke-width="1.1" stroke-linecap="round" fill="none" opacity="0.4"/>
           </g>
 
           <!-- Griff -->
@@ -924,7 +925,7 @@
 
           <!-- Claim -->
           <text x="55" y="65" text-anchor="middle"
-                font-family="Lato, sans-serif" font-weight="900" font-size="12.7"
+                font-family="Lato, sans-serif" font-weight="900" font-size="14"
                 fill="#ffffff" letter-spacing="1"
                 filter="url(#txt-shadow)">&#x266A; HÖR REIN</text>
           <text x="55" y="79" text-anchor="middle"
