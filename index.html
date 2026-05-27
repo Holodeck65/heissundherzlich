@@ -6,7 +6,7 @@
   <title>Heiss &amp; Herzlich — Der Heizratgeber-Podcast</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Source+Sans+Pro:wght@400;600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after {
@@ -128,7 +128,7 @@
        HERO
     ════════════════════════════════════════ */
     .hero {
-      background-color: var(--anthrazit);
+      background: linear-gradient(135deg, #2a0e05 0%, #6b2510 30%, #8b3515 55%, #5a1e0a 80%, #2a0e05 100%);
       color: #fff;
       padding: 72px 24px 88px;
       text-align: center;
@@ -136,14 +136,14 @@
       overflow: hidden;
     }
 
-    /* Subtile Farbakzente ohne Gradient im eigentlichen Sinne */
     .hero::before {
       content: '';
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 60% 50% at 15% 85%, rgba(196,98,45,0.12) 0%, transparent 55%),
-        radial-gradient(ellipse 50% 55% at 88% 18%, rgba(42,100,150,0.14) 0%, transparent 55%);
+        radial-gradient(ellipse 80% 60% at 20% 80%, rgba(220,110,50,0.55) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 50% at 85% 20%, rgba(180,70,25,0.45) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 40% at 50% 50%, rgba(150,55,15,0.30) 0%, transparent 65%);
       pointer-events: none;
     }
 
@@ -182,7 +182,7 @@
     }
 
     .hero-wordmark .w-heiss     { color: var(--terrakotta); }
-    .hero-wordmark .w-amp       { color: rgba(255,255,255,0.75); }
+    .hero-wordmark .w-amp       { color: rgba(255,255,255,0.75); font-family: 'Playfair Display', serif; font-style: italic; }
     .hero-wordmark .w-herzlich  { color: #6bb3e0; }
 
     .hero-subtitle {
@@ -811,15 +811,15 @@
 
       <!-- Kompass-Logo SVG -->
       <div class="hero-logo" aria-hidden="true">
-        <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
           <!-- Kreis -->
-          <circle cx="36" cy="36" r="34" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
-          <!-- Kompassnadel Terrakotta (NW–SO) -->
-          <polygon points="36,8 43,36 36,52 29,36" fill="#C4622D"/>
-          <!-- Kompassnadel Stahlblau (NO–SW), überkreuzt -->
-          <polygon points="64,36 36,29 20,36 36,43" fill="#2A6496"/>
+          <circle cx="50" cy="50" r="47" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+          <!-- Kompassnadel Terrakotta (N–S) -->
+          <polygon points="50,6 60,50 50,94 40,50" fill="#C4622D"/>
+          <!-- Kompassnadel Stahlblau (W–E) -->
+          <polygon points="6,50 50,40 94,50 50,60" fill="#2A6496"/>
           <!-- Mittelkreis -->
-          <circle cx="36" cy="36" r="4.5" fill="#F5EFE6"/>
+          <circle cx="50" cy="50" r="6" fill="#F5EFE6"/>
         </svg>
       </div>
 
