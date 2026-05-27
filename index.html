@@ -141,7 +141,7 @@
       top: 52px;
       right: 16px;
       width: 165px;
-      height: 155px;
+      height: 138px;
       cursor: pointer;
       z-index: 10;
       filter: drop-shadow(0 8px 22px rgba(0,0,0,0.55));
@@ -152,61 +152,24 @@
       filter: drop-shadow(0 8px 28px rgba(196,98,45,0.65));
     }
 
-    .stoerer-svg {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+    .stoerer-needle {
+      transform-box: fill-box;
+      transform-origin: 50% 0%;
+      animation: needle-scan 2.5s ease-in-out infinite;
     }
 
-    .stoerer-display {
-      position: absolute;
-      top: 30px;
-      left: 78px;
-      width: 78px;
-      height: 72px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      pointer-events: none;
+    .stoerer-signal {
+      animation: signal-blink 1.8s ease-in-out infinite;
     }
 
-    .s3d-line {
-      display: block;
-      font-family: 'Lato', sans-serif;
-      font-weight: 900;
-      color: #fff;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      line-height: 1.25;
-      animation: fly3d 5s ease-in-out infinite;
-      opacity: 0;
+    @keyframes needle-scan {
+      0%, 100% { transform: rotate(-14deg); }
+      50%       { transform: rotate(14deg); }
     }
 
-    .s3d-icon {
-      font-size: 1.2rem;
-      color: #e8a07a;
-      animation-delay: 0s;
-    }
-
-    .s3d-a {
-      font-size: 0.68rem;
-      animation-delay: 0.12s;
-    }
-
-    .s3d-b {
-      font-size: 0.68rem;
-      color: #C4622D;
-      animation-delay: 0.24s;
-    }
-
-    @keyframes fly3d {
-      0%        { transform: perspective(260px) translateZ(-180px) rotateX(38deg); opacity: 0; }
-      14%       { transform: perspective(260px) translateZ(6px)    rotateX(-4deg); opacity: 1; }
-      22%, 70%  { transform: perspective(260px) translateZ(0)      rotateX(0deg);  opacity: 1; }
-      84%       { transform: perspective(260px) translateZ(65px)   rotateX(-10deg); opacity: 0; }
-      100%      { transform: perspective(260px) translateZ(-180px) rotateX(38deg); opacity: 0; }
+    @keyframes signal-blink {
+      0%, 100% { opacity: 0.2; }
+      50%       { opacity: 1; }
     }
 
     .hero::before {
@@ -895,51 +858,57 @@
       </div>
 
       <div class="hero-stoerer" aria-label="Hör rein – unser Song heizt ein!">
-        <svg class="stoerer-svg" viewBox="0 0 110 103" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="0 0 110 90" width="165" height="138" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Badge -->
+          <rect x="1" y="1" width="108" height="88" rx="11" fill="rgba(16,5,1,0.9)"/>
+          <rect x="1" y="1" width="108" height="88" rx="11" stroke="#C4622D" stroke-width="2" fill="none"/>
+
           <!-- Antenne -->
-          <line x1="84" y1="14" x2="102" y2="1" stroke="#F5EFE6" stroke-width="1.8" stroke-linecap="round" opacity="0.5"/>
-          <circle cx="102" cy="1" r="1.5" fill="#F5EFE6" opacity="0.5"/>
+          <line x1="79" y1="9" x2="94" y2="1" stroke="rgba(245,239,230,0.6)" stroke-width="1.8" stroke-linecap="round"/>
+          <!-- Signalwellen (animiert) -->
+          <g class="stoerer-signal">
+            <path d="M96,5 Q99,3 96,1" stroke="#C4622D" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+            <path d="M99,7 Q104,3 99,0" stroke="#C4622D" stroke-width="1.1" stroke-linecap="round" fill="none" opacity="0.6"/>
+          </g>
+
           <!-- Griff -->
-          <path d="M26,12 Q55,1 84,12" stroke="#C4622D" stroke-width="3" fill="none" stroke-linecap="round"/>
-          <!-- Gehäuse -->
-          <rect x="5" y="15" width="100" height="82" rx="7" fill="#2C2C2C"/>
-          <rect x="5" y="15" width="100" height="82" rx="7" stroke="rgba(255,255,255,0.07)" stroke-width="1" fill="none"/>
-          <!-- Lautsprechergitter (links) -->
-          <rect x="10" y="20" width="38" height="55" rx="4" fill="rgba(0,0,0,0.3)"/>
-          <!-- Dots 5×8 -->
-          <circle cx="17" cy="27" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="23" cy="27" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="29" cy="27" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="35" cy="27" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="41" cy="27" r="1.4" fill="rgba(245,239,230,0.22)"/>
-          <circle cx="17" cy="33" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="23" cy="33" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="29" cy="33" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="35" cy="33" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="41" cy="33" r="1.4" fill="rgba(245,239,230,0.22)"/>
-          <circle cx="17" cy="39" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="23" cy="39" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="29" cy="39" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="35" cy="39" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="41" cy="39" r="1.4" fill="rgba(245,239,230,0.22)"/>
-          <circle cx="17" cy="45" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="23" cy="45" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="29" cy="45" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="35" cy="45" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="41" cy="45" r="1.4" fill="rgba(245,239,230,0.22)"/>
-          <circle cx="17" cy="51" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="23" cy="51" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="29" cy="51" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="35" cy="51" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="41" cy="51" r="1.4" fill="rgba(245,239,230,0.22)"/>
-          <circle cx="17" cy="57" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="23" cy="57" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="29" cy="57" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="35" cy="57" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="41" cy="57" r="1.4" fill="rgba(245,239,230,0.22)"/>
-          <circle cx="17" cy="63" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="23" cy="63" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="29" cy="63" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="35" cy="63" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="41" cy="63" r="1.4" fill="rgba(245,239,230,0.22)"/>
-          <circle cx="17" cy="69" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="23" cy="69" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="29" cy="69" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="35" cy="69" r="1.4" fill="rgba(245,239,230,0.22)"/><circle cx="41" cy="69" r="1.4" fill="rgba(245,239,230,0.22)"/>
-          <!-- Display (rechts) -->
-          <rect x="52" y="20" width="48" height="48" rx="4" fill="rgba(22,48,72,0.85)"/>
-          <rect x="52" y="20" width="48" height="48" rx="4" stroke="rgba(42,100,150,0.4)" stroke-width="1" fill="none"/>
-          <!-- Senderstreifen -->
-          <line x1="56" y1="34" x2="96" y2="34" stroke="rgba(255,255,255,0.1)" stroke-width="0.7"/>
-          <line x1="56" y1="40" x2="96" y2="40" stroke="rgba(255,255,255,0.1)" stroke-width="0.7"/>
-          <line x1="56" y1="46" x2="96" y2="46" stroke="rgba(255,255,255,0.1)" stroke-width="0.7"/>
-          <line x1="56" y1="52" x2="96" y2="52" stroke="rgba(255,255,255,0.1)" stroke-width="0.7"/>
-          <!-- Trennlinie Gehäuse -->
-          <line x1="5" y1="78" x2="105" y2="78" stroke="rgba(0,0,0,0.3)" stroke-width="1"/>
-          <!-- Knöpfe unten -->
-          <circle cx="22" cy="88" r="6.5" fill="#1a1a1a" stroke="#C4622D" stroke-width="1.5"/>
-          <line x1="22" y1="83" x2="22" y2="88" stroke="#C4622D" stroke-width="1.5" stroke-linecap="round"/>
-          <circle cx="40" cy="88" r="4.5" fill="#1a1a1a" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-          <circle cx="40" cy="88" r="1.5" fill="rgba(255,255,255,0.2)"/>
-          <circle cx="55" cy="89" r="3" fill="#C4622D" opacity="0.7"/>
-          <rect x="65" y="84" width="35" height="8" rx="2" fill="rgba(0,0,0,0.3)"/>
-          <rect x="67" y="86" width="14" height="4" rx="1" fill="rgba(42,100,150,0.5)"/>
+          <path d="M29,9 Q55,1 81,9" stroke="rgba(245,239,230,0.55)" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+          <!-- Gehäuse (Line-Art) -->
+          <rect x="18" y="10" width="72" height="40" rx="5" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+
+          <!-- Lautsprecherschlitze links -->
+          <line x1="25" y1="15" x2="25" y2="44" stroke="rgba(255,255,255,0.4)" stroke-width="1.3"/>
+          <line x1="31" y1="15" x2="31" y2="44" stroke="rgba(255,255,255,0.4)" stroke-width="1.3"/>
+          <line x1="37" y1="15" x2="37" y2="44" stroke="rgba(255,255,255,0.4)" stroke-width="1.3"/>
+          <line x1="43" y1="15" x2="43" y2="44" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+
+          <!-- Trennlinie Grille/Display -->
+          <line x1="49" y1="11" x2="49" y2="49" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+
+          <!-- Display -->
+          <rect x="53" y="13" width="32" height="21" rx="2.5" fill="rgba(42,100,150,0.2)" stroke="rgba(42,100,150,0.5)" stroke-width="1"/>
+          <line x1="56" y1="20" x2="82" y2="20" stroke="rgba(255,255,255,0.12)" stroke-width="0.7"/>
+          <line x1="56" y1="25" x2="82" y2="25" stroke="rgba(255,255,255,0.12)" stroke-width="0.7"/>
+          <!-- Abstimmnadel (animiert) -->
+          <rect class="stoerer-needle" x="68" y="14" width="2" height="19" rx="1" fill="#C4622D"/>
+
+          <!-- Knopf -->
+          <circle cx="71" cy="42" r="4" fill="rgba(0,0,0,0.4)" stroke="rgba(255,255,255,0.45)" stroke-width="1"/>
+          <circle cx="71" cy="42" r="1.4" fill="#C4622D"/>
+          <circle cx="83" cy="43" r="2.8" fill="rgba(0,0,0,0.4)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+
+          <!-- Claim-Trenner -->
+          <line x1="10" y1="54" x2="100" y2="54" stroke="rgba(196,98,45,0.35)" stroke-width="0.8"/>
+
+          <!-- Claim -->
+          <text x="55" y="67" text-anchor="middle"
+                font-family="Lato, sans-serif" font-weight="900" font-size="9.5"
+                fill="#ffffff" letter-spacing="1">&#x266A; HÖR REIN</text>
+          <text x="55" y="79" text-anchor="middle"
+                font-family="Lato, sans-serif" font-weight="700" font-size="7"
+                fill="rgba(245,239,230,0.65)" letter-spacing="0.4">UNSER SONG HEIZT EIN!</text>
         </svg>
-        <!-- Animierter Text im Display -->
-        <div class="stoerer-display">
-          <span class="s3d-line s3d-icon">♪</span>
-          <span class="s3d-line s3d-a">HÖR REIN</span>
-          <span class="s3d-line s3d-b">JETZT!</span>
-        </div>
       </div>
 
       <p class="hero-badge">Kommt bald &mdash; Jetzt Benachrichtigung sichern</p>
