@@ -172,6 +172,19 @@
       50%       { opacity: 1; }
     }
 
+    /* Playing-Zustand */
+    .hero-stoerer.playing {
+      filter: drop-shadow(0 0 14px rgba(196,98,45,0.85)) drop-shadow(0 8px 22px rgba(0,0,0,0.55));
+    }
+
+    .hero-stoerer.playing .stoerer-signal {
+      animation-duration: 0.5s;
+    }
+
+    .hero-stoerer.playing .stoerer-needle {
+      animation-duration: 0.6s;
+    }
+
     .hero::before {
       content: '';
       position: absolute;
@@ -1247,6 +1260,26 @@
 
       emailEl.addEventListener('input', function () {
         emailEl.style.borderColor = '';
+      });
+    })();
+
+    /* ── Radio-Player ── */
+    (function () {
+      var audio   = new Audio('Heiss%20und%20Herzlich%20Podcast%20Song%20V1.mp3');
+      var stoerer = document.querySelector('.hero-stoerer');
+
+      audio.addEventListener('ended', function () {
+        stoerer.classList.remove('playing');
+      });
+
+      stoerer.addEventListener('click', function () {
+        if (audio.paused) {
+          audio.play();
+          stoerer.classList.add('playing');
+        } else {
+          audio.pause();
+          stoerer.classList.remove('playing');
+        }
       });
     })();
   </script>
