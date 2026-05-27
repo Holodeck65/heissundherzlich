@@ -138,57 +138,37 @@
 
     .hero-stoerer {
       position: absolute;
-      top: 80px;
-      right: 24px;
-      width: 148px;
-      height: 148px;
-      background: radial-gradient(circle at 40% 40%, #e8723a, #C4622D 60%, #a04820);
-      clip-path: polygon(
-        50%  0%,  56% 18%, 73%  7%, 70% 26%, 90% 22%, 80% 38%,
-        100% 41%, 84% 52%, 98% 63%, 79% 64%, 85% 82%, 67% 74%,
-        62% 94%, 50% 80%, 38% 94%, 33% 74%, 15% 82%, 21% 64%,
-         2% 63%, 16% 52%,  0% 41%, 20% 38%, 10% 22%, 30% 26%,
-        27%  7%, 44% 18%
-      );
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      top: 72px;
+      right: 20px;
+      width: 152px;
+      height: 152px;
       cursor: pointer;
-      box-shadow: 0 6px 24px rgba(0,0,0,0.4);
       z-index: 10;
-      animation: stoerer-spin 12s linear infinite;
+      filter: drop-shadow(0 6px 20px rgba(0,0,0,0.5));
+      transition: filter 0.2s;
     }
 
     .hero-stoerer:hover {
-      animation-play-state: paused;
-      filter: brightness(1.15);
+      filter: drop-shadow(0 6px 28px rgba(196,98,45,0.7));
     }
 
-    .stoerer-text {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-family: 'Lato', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 900;
-      line-height: 1.3;
-      color: #fff;
-      padding: 22px;
-      animation: stoerer-spin-reverse 12s linear infinite;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+    .stoerer-needles {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: needle-spin 6s linear infinite;
     }
 
-    .stoerer-text .stoerer-icon {
-      font-size: 1.4rem;
-      margin-bottom: 3px;
-      display: block;
+    .hero-stoerer:hover .stoerer-needles {
+      animation-duration: 1.2s;
     }
 
-    @keyframes stoerer-spin         { to { transform: rotate(360deg);  } }
-    @keyframes stoerer-spin-reverse { to { transform: rotate(-360deg); } }
+    .stoerer-ring-text {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: needle-spin 24s linear infinite;
+    }
+
+    @keyframes needle-spin { to { transform: rotate(360deg); } }
 
     .hero::before {
       content: '';
@@ -875,11 +855,32 @@
         </svg>
       </div>
 
-      <div class="hero-stoerer" aria-label="Hör rein – unser Song!">
-        <span class="stoerer-text">
-          <span class="stoerer-icon">🔥</span>
-          Hör rein —<br>unser Song<br>heizt ein!
-        </span>
+      <div class="hero-stoerer" aria-label="Hör rein – unser Song heizt ein!">
+        <svg viewBox="0 0 100 100" width="152" height="152" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <path id="txt-ring" d="M50,50 m-41,0 a41,41 0 1,1 82,0 a41,41 0 1,1 -82,0"/>
+          </defs>
+          <!-- Hintergrundkreis -->
+          <circle cx="50" cy="50" r="48" fill="rgba(20,6,2,0.72)"/>
+          <circle cx="50" cy="50" r="48" stroke="rgba(255,255,255,0.18)" stroke-width="1.2"/>
+          <!-- Kreistext (dreht sich langsam) -->
+          <g class="stoerer-ring-text">
+            <text font-size="7.2" fill="rgba(255,255,255,0.65)"
+                  font-family="Lato, sans-serif" font-weight="700"
+                  letter-spacing="1.5" text-anchor="start">
+              <textPath href="#txt-ring" startOffset="0%">
+                ♪ HÖR REIN · UNSER SONG HEIZT EIN · ♪ ·
+              </textPath>
+            </text>
+          </g>
+          <!-- Kompassnadeln (drehen sich schnell) -->
+          <g class="stoerer-needles">
+            <polygon points="50,20 57,50 50,80 43,50" fill="#C4622D"/>
+            <polygon points="20,50 50,43 80,50 50,57" fill="#2A6496"/>
+          </g>
+          <!-- Mittelpunkt -->
+          <circle cx="50" cy="50" r="5" fill="#F5EFE6"/>
+        </svg>
       </div>
 
       <p class="hero-badge">Kommt bald &mdash; Jetzt Benachrichtigung sichern</p>
