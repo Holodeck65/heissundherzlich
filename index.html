@@ -138,38 +138,57 @@
 
     .hero-stoerer {
       position: absolute;
-      top: 28px;
-      right: 32px;
-      width: 110px;
-      height: 110px;
-      background: var(--terrakotta);
-      border-radius: 50%;
+      top: 80px;
+      right: 24px;
+      width: 148px;
+      height: 148px;
+      background: radial-gradient(circle at 40% 40%, #e8723a, #C4622D 60%, #a04820);
+      clip-path: polygon(
+        50%  0%,  56% 18%, 73%  7%, 70% 26%, 90% 22%, 80% 38%,
+        100% 41%, 84% 52%, 98% 63%, 79% 64%, 85% 82%, 67% 74%,
+        62% 94%, 50% 80%, 38% 94%, 33% 74%, 15% 82%, 21% 64%,
+         2% 63%, 16% 52%,  0% 41%, 20% 38%, 10% 22%, 30% 26%,
+        27%  7%, 44% 18%
+      );
       display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.4);
+      z-index: 10;
+      animation: stoerer-spin 12s linear infinite;
+    }
+
+    .hero-stoerer:hover {
+      animation-play-state: paused;
+      filter: brightness(1.15);
+    }
+
+    .stoerer-text {
+      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
       font-family: 'Lato', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      line-height: 1.35;
+      font-size: 0.7rem;
+      font-weight: 900;
+      line-height: 1.3;
       color: #fff;
-      padding: 12px;
-      cursor: pointer;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.35);
-      z-index: 10;
-      transition: transform 0.2s ease, background 0.2s ease;
-      animation: stoerer-wobble 3s ease-in-out infinite;
+      padding: 22px;
+      animation: stoerer-spin-reverse 12s linear infinite;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
-    .hero-stoerer:hover {
-      background: var(--terrakotta-h);
-      transform: scale(1.07) rotate(-3deg);
+    .stoerer-text .stoerer-icon {
+      font-size: 1.4rem;
+      margin-bottom: 3px;
+      display: block;
     }
 
-    @keyframes stoerer-wobble {
-      0%, 100% { transform: rotate(-4deg); }
-      50%       { transform: rotate(4deg); }
-    }
+    @keyframes stoerer-spin         { to { transform: rotate(360deg);  } }
+    @keyframes stoerer-spin-reverse { to { transform: rotate(-360deg); } }
 
     .hero::before {
       content: '';
@@ -856,7 +875,12 @@
         </svg>
       </div>
 
-      <div class="hero-stoerer" aria-label="Höre dir unseren Song an">Höre dir unseren Song an!</div>
+      <div class="hero-stoerer" aria-label="Hör rein – unser Song!">
+        <span class="stoerer-text">
+          <span class="stoerer-icon">🔥</span>
+          Hör rein —<br>unser Song<br>heizt ein!
+        </span>
+      </div>
 
       <p class="hero-badge">Kommt bald &mdash; Jetzt Benachrichtigung sichern</p>
 
