@@ -196,21 +196,41 @@
     }
 
     .hero-tagline {
-      font-family: 'Source Sans Pro', sans-serif;
-      font-size: clamp(1rem, 2.2vw, 1.15rem);
-      color: rgba(255,255,255,0.88);
-      max-width: 580px;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+      color: #e8a07a;
+      max-width: 640px;
       margin: 0 auto 44px;
-      line-height: 1.55;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
       position: relative;
       z-index: 1;
     }
 
-    .hero-tagline .tagline-core {
-      font-family: 'Lato', sans-serif;
-      font-weight: 700;
-      color: #e8a07a;
-      font-style: italic;
+    .hero-tagline .tagline-item {
+      flex: 1;
+      text-align: center;
+      padding: 0 18px;
+    }
+
+    .hero-tagline .tagline-divider {
+      width: 1px;
+      height: 2em;
+      background: rgba(255,255,255,0.3);
+      flex-shrink: 0;
+    }
+
+    .hero-old-friends {
+      font-family: 'Source Sans Pro', sans-serif;
+      font-size: clamp(1rem, 2.2vw, 1.15rem);
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-cta-group {
@@ -830,10 +850,15 @@
       </h1>
       <p class="hero-subtitle">Der Heizratgeber-Podcast</p>
 
-      <p class="hero-tagline">
-        Zwei alte Freunde.<br>
-        <span class="tagline-core">Einer fragt. Einer erklärt. Keiner gewinnt. Alle lernen was.</span>
-      </p>
+      <p class="hero-old-friends">Zwei alte Freunde.</p>
+
+      <div class="hero-tagline" role="list">
+        <span class="tagline-item">Einer fragt.</span>
+        <span class="tagline-divider" aria-hidden="true"></span>
+        <span class="tagline-item">Einer erklärt.</span>
+        <span class="tagline-divider" aria-hidden="true"></span>
+        <span class="tagline-item">Keiner&nbsp;gewinnt.<br>Alle lernen&nbsp;was.</span>
+      </div>
 
       <div class="hero-cta-group">
         <a href="#newsletter" class="btn-primary">Benachrichtigt werden</a>
